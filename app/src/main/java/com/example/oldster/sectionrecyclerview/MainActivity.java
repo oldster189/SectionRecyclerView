@@ -27,24 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Call<String> call = HttpManager.getInstance()
-                .getService()
-                .getTextPlain();
-        call.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if (response.isSuccessful()){
-                    Log.e(TAG,response.body().toString());
-                }else {
-                    Log.e(TAG,response.errorBody().toString());
-                }
-            }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Log.e(TAG,t.toString());
-            }
-        });
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mRecyclerView.setHasFixedSize(true);
